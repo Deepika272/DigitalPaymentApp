@@ -1,0 +1,43 @@
+{% extends "partials/dashbord_base.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+    <style>
+    .credit{
+        margin-top: 200px;
+            margin-left: 200px;
+            border: solid;
+        }
+    .pay{
+        border: black solid;
+        height: 40px;
+        width: 100px;
+        margin-top: 10px;
+    }
+    </style>
+</head>
+    <div class="credit">
+        <h5>Account holder: {{account.user}}</h5>
+        <h5>Account Number: {{account.account_number}}</h5>
+        <h5>Account id: {{account.account_id}}</h5>
+        <h5>Full name: {{account.kyc.full_name}}</h5>
+        <h5>Gender: {{account.kyc.gender}}</h5>
+        <h5>Identity type: {{account.kyc.identity_type}}</h5>
+        <h5>Date of birth: {{account.kyc.date_of_birth}}</h5>
+        <h5>Account status: {{account.account_status}}</h5>
+        <h5>Account balance: {{account.account_balance}}</h5>
+        <h5>Card holder: {{credit_card.name}}</h5>
+        <h5>Card Number: {{credit_card.number}}</h5>
+        <h5>Card Type: {{credit_card.card_type}}</h5>
+        <h5>Card Status: {{credit_card.card_status}}</h5>
+        <h5>Expire Month: {{credit_card.month}}</h5>
+        <h5>Expire Year: {{credit_card.year}}</h5>
+        <h5>CVV: {{credit_card.cvv}}</h5>
+        <h5>Credit card amount: {{credit_card.amount}}</h5>
+
+        <a href="{% url 'transactions:card_bill' credit_card.card_id %}" class="pay" align="center">Paybill</a>
+        <a href="{% url 'transactions:credit_card_withdraw' credit_card.card_id %}" class="pay" align="center">Withdraw</a>
+        <a href="{%url 'transactions:card_delate' credit_card.card_id %}" class="pay" align="center">DELETE</a>
+    </div>
+{% endblock content%}
