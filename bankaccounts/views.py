@@ -55,7 +55,7 @@ def account(request):
 def dashboard(request):
     user =request.user
     account=Account.objects.get(user=user)
-    kyc=KYC.objects.get(user=user)
+    kyc=KYC.objects.all()
     sender_transaction=Transaction.objects.all()
     reciever_transaction=Transaction.objects.all()
     request_sender_transaction=Transaction.objects.all()
